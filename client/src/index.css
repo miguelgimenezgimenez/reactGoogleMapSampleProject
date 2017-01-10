@@ -1,0 +1,21 @@
+@import "colors.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Titillium Web','Roboto', 'sans-serif';
+  background-color: var(--bg-dark);
+  background-image:url('/Users/miguelgimenez/whatHappsClient/client/img/gplaypattern.png');
+}
+button {
+  background-color: var(--hipster-orange);
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  border:none !important;
+  box-shadow:none !important;
+}
+button:hover {
+  background-color: var(--hipster-green);
+  cursor: pointer;;
+}

@@ -1,0 +1,35 @@
+{
+  "name": "whathapps",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-plugin-react": "^6.8.0",
+    "react-scripts": "0.8.4",
+    "semantic-ui": "^2.2.7"
+  },
+  "dependencies": {
+    "google-maps-react": "^1.0.19",
+    "invariant": "^2.2.2",
+    "material-ui": "^0.16.5",
+    "point-in-polygon": "^1.0.1",
+    "react": "^15.4.1",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.1",
+    "react-github-fork-ribbon": "^0.4.4",
+    "react-icons": "^2.2.3",
+    "react-redux": "^5.0.1",
+    "react-router": "^3.0.0",
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.6.0",
+    "redux-devtools-extension": "^1.0.0",
+    "semantic-ui-css": "^2.2.4",
+    "semantic-ui-react": "^0.63.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
