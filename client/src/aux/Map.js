@@ -5,44 +5,39 @@ import isInside from 'point-in-polygon';
 
 const markersArray=[];
 let bounds;
-let drawingManager;
 
 class Map extends React.Component {
   constructor () {
     super();
     this.state = {
       drawMode:false,
-      loading:true,
     };
   }
-
+  // componentDidMount() {
+  //   this.loadMap();
+  //
+  // }
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.google !== this.props.google){
+
+
+    if (prevProps.google !== this.props.google) {
       this.loadMap();
-    }
-      if (this.props.markers.length>0) {
-        this.getMarkers();
-      }
-
-  }
-
-  componentWillReceiveProps(nextProps) {
-     if (!this.state.loading) {
-      if (this.props.markers.length>0) {
-        this.getMarkers();
-      }
-      if (!this.state.drawMode&&nextProps.drawMode) {
+      if (this.props.drawMode) {
         this.drawPolyline();
       }
     }
   }
 
-  drawPolyline(){
-    this.setState({
-      drawMode: true,
-    });
+  componentWillReceiveProps(nextProps) {
     const google = this.props.google;
-    drawingManager = new google.maps.drawing.DrawingManager({
+    if (this.props.drawMode !== nextProps.drawMode && nextProps.drawMode && this.props.google) {
+      this.drawPolyline();
+    }
+  }
+
+  drawPolyline(){
+    const google = this.props.google;
+    let drawingManager = new google.maps.drawing.DrawingManager({
       drawingMode: google.maps.drawing.OverlayType.POLYGON,
       drawingControl: false,
       polygonOptions:this.props.polygonOptions
@@ -107,14 +102,19 @@ class Map extends React.Component {
   // DISPLAY MARKERS IN MAP
   //======================================================
   getMarkers(){
+    console.log('getmarkers');
     const {google} = this.props;
     const maps = google.maps;
+
 
     this.props.markers.forEach((flag)=>{
       const markerProps=({
         ...flag,
         position: new google.maps.LatLng(flag.latLng.lat,flag.latLng.lng),
-        map: this.map,})
+        map: this.map
+      })
+
+
         const marker = new maps.Marker(markerProps);
 
         if (this.props.onMarkerClick) {
@@ -141,30 +141,32 @@ class Map extends React.Component {
     }
 
     loadMap(){
-      if (this.props && this.props.google) {
-        // google is available
-        const {google} = this.props;
-        const maps = google.maps;
+      // if (this.props && this.props.google) {
+      // google is available
+      const {google} = this.props;
+      const maps = google.maps;
 
-        const mapRef = this.refs.map;
-        const node = ReactDOM.findDOMNode(mapRef);
-        const {mapConfig}=this.props;
-        let {zoom} = mapConfig;
-        let {lat} = mapConfig;
-        let {lng} = mapConfig;
-        const center = new maps.LatLng(lat, lng);
-        const mapConfiguration = Object.assign({}, {
-          center: center,
-          zoom: zoom
-        })
-        this.map = new maps.Map(node, mapConfiguration);
-        // this.setState({
-        //   loading: false,
-        // });
-      }
+      const mapRef = this.refs.map;
+      const node = ReactDOM.findDOMNode(mapRef);
+      const {mapConfig}=this.props;
+      let {zoom} = mapConfig;
+      let {lat} = mapConfig;
+      let {lng} = mapConfig;
+      const center = new maps.LatLng(lat, lng);
+      const mapConfiguration = Object.assign({}, {
+        center: center,
+        zoom: zoom
+      })
+      this.map = new maps.Map(node, mapConfiguration);
+      google.maps.event.addListenerOnce(this.map, 'idle', ()=>{
+        this.getMarkers();
+      });
+
+      // }
     }
 
     render() {
+
       return (
         <div
           style={this.props.mapStyle}

@@ -28,6 +28,7 @@ class AllActivities extends Component {
   }
 
   handleReturnedMarkers (markers) {
+    console.log(markers);
 
   }
 
@@ -37,7 +38,7 @@ class AllActivities extends Component {
   }
 
   render() {
-    console.log(this.props.activities, 'act');
+
     return (<div>
       <button onClick={this.toggleDraw.bind(this)}>Draw Area</button>
       <div className='main-body'>

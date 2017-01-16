@@ -24,7 +24,7 @@ export const wrapper = (options) => (WrappedComponent) => {
 
       const refs = this.refs;
       this.scriptCache.google.onLoad((err, tag) => {
-        // try {
+        try {
           const maps = window.google.maps;
           const props = Object.assign({}, this.props, {
             loaded: this.state.loaded
@@ -43,10 +43,10 @@ export const wrapper = (options) => (WrappedComponent) => {
             map: this.map,
             google: window.google
           })
-        // } catch (e){
-        //   console.log(e);
-        //   // window.location.reload();
-        // }
+        } catch (e){
+          console.log(e);
+          // window.location.reload();
+        }
       });
 
     }
