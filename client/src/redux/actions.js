@@ -2,7 +2,7 @@ import { CALL_API } from './apiMiddleWare';
 
 
 //======================================================
-// User actions
+// USER ACTIONS
 //======================================================
 export const login = (user) => {
   return {
@@ -13,22 +13,54 @@ export const login = (user) => {
 
 export const existingUser = (data) => ({
   type: 'EXISTING_USER',
+  success:login,
   [CALL_API]:{
     endpoint:'/login',
     method:'POST',
     data
   }
-
 });
 
 export const newUser = (data) => {
   return {
     type: 'NEW_USER',
+    success:login,
     [CALL_API]:{
       endpoint:'/newuser',
       method:'POST',
       data
     }
+  }
+};
 
+//======================================================
+// ACTIVITIES ACTIONS
+//======================================================
+export const addActivities = (data) =>{
+  return {
+    type: 'ADD_ACTIVITIES',
+    data
+  }
+}
+
+export const fetchActivities = (data) => {
+  return {
+    type: 'FETCH_ACTIVITIES',
+    success:addActivities,
+    [CALL_API]:{
+      endpoint:'/fetchActivities',
+      data
+    }
+  }
+};
+export const createActivity = (data) => {
+  return {
+    type: 'CREATE_ACTIVITY',
+    success:login,
+    [CALL_API]:{
+      endpoint:'/createActivity',
+      method:'POST',
+      data
+    }
   }
 };

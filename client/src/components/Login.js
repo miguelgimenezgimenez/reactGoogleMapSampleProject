@@ -12,7 +12,7 @@ import {greenBackground} from '../colors';
 
 const LinkToForms = (props) => <div>
   <ul className="tab-group">
-    <li className="tab"><Link activeStyle={greenBackground} to="newuser">Sign Up</Link></li>
+    <li className="tab"><Link activeStyle={greenBackground} to="/">Sign Up</Link></li>
     <li className="tab"><Link activeStyle={greenBackground} to="existing">Login</Link></li>
   </ul>
   {props.children}

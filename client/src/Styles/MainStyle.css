@@ -1,0 +1,17 @@
+.main-body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.mapcontainer{
+  height: 400px;
+  width: 600px;
+  margin-top: 30px;
+
+}
+.event-data{
+
+  /*background-color: red;*/
+}

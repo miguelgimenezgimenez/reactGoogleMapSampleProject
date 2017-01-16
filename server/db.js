@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/batch2_events');
+mongoose.connect('mongodb://localhost/cityVice');
 
 mongoose.Promise = global.Promise;
 

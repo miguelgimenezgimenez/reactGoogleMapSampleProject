@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import { connect } from 'react-redux';
 import { existingUser } from '../redux/actions';
+import Login from '../components/Login';
 
 import '../Styles/LoginFormStyle.css';
 
@@ -28,9 +29,8 @@ class ExistingUserForm extends Component {
     }
   }
   render () {
-    console.log(this.state);
     return (
-      <div>
+      <Login>
         <h1>Welcome Back!</h1>
 
         <div className="field-wrap">
@@ -58,7 +58,7 @@ class ExistingUserForm extends Component {
             onClick={()=>this.submit()}
             >Log In
           </button>
-        </div>);
+        </Login>);
 
       }
     }

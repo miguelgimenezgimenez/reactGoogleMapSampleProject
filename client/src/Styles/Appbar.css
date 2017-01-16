@@ -1,0 +1,59 @@
+@import "./colors.css";
+#searchBar {
+  padding: 2px 8px;
+  height: 20px;
+}
+
+.upper-nav {
+  height: 80px;
+  margin: 0;
+  border-radius: 0;
+  /*background-color: var(--hipster-orange);*/
+  background: url("../../img/gplaypattern.png");
+  display: flex;
+  align-items: center;
+}
+
+.user {
+  /*display: flex;*/
+  right: 80px;
+  position: absolute;
+}
+.create-activity {
+  color: var(--hipster-orange);
+  background-color: var(--hipster-dark);
+
+}
+.menu-btn{
+  height: 45px;
+  width: 45px;
+}
+
+
+
+.lower-nav {
+  height: 40px;
+  background-color: var(--hipster-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hipster-orange);
+  border-bottom: 3px solid var(--hipster-orange);
+  /*border-top: 3px solid var(--hipster-orange);*/
+
+}
+.lower-nav-item {
+  color:white;
+  height: auto;
+  height: 38px;
+  padding: 8px;
+  margin-right: 40px;
+}
+.selected{
+  background-color: var(--hipster-orange);
+}
+.avatar {
+  border-radius: 40px;
+  margin: 8px 15px;
+  border: solid 2px lightgray;
+}
