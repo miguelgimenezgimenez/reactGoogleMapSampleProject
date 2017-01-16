@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import inside from 'point-in-polygon';
-import GoogleMapDrawFilter from '../aux/GoogleMapDrawFilter.js';
+import GoogleMapDrawFilter from 'react-google-map-draw-filter';
 import {fetchActivities} from '../redux/actions';
 import '../Styles/MainStyle.css';
 
@@ -28,7 +28,6 @@ class AllActivities extends Component {
   }
 
   handleReturnedMarkers (markers) {
-    console.log(markers);
 
   }
 
@@ -44,7 +43,6 @@ class AllActivities extends Component {
       <div className='main-body'>
         <div className='mapcontainer'>
           <GoogleMapDrawFilter
-            apiKey='AIzaSyBbnApuQR5k2uupNDdyAGOHaG-kp9FClKU'
             markers={this.props.activities}
             drawMode={this.state.draw}
             handleReturnedMarkers={this.handleReturnedMarkers

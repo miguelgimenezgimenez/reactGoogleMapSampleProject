@@ -10,14 +10,10 @@ let ApiKey;
 
 
 class GoogleMapDrawFilter extends React.Component {
-	componentWillReceiveProps(prevProps){
-	}
 
-	componentWillMount(){
-		console.log();
-	}
 
 	render () {
+
 		return (
 			<div >
 				<Map
@@ -29,6 +25,7 @@ class GoogleMapDrawFilter extends React.Component {
 					polygonOptions={this.props.polygonOptions}
 					handleReturnedMarkers={this.props.handleReturnedMarkers}
 					onMarkerClick={this.props.onMarkerClick}
+					insertMarker={this.props.insertMarker}
 				/>
 
 			</div>
@@ -39,7 +36,6 @@ class GoogleMapDrawFilter extends React.Component {
 
 
 GoogleMapDrawFilter.propTypes={
-	apiKey:React.PropTypes.string.isRequired,
 	drawMode:React.PropTypes.bool,
 	markers:React.PropTypes.array,
 	mapConfig:React.PropTypes.object,
@@ -76,4 +72,6 @@ GoogleMapDrawFilter.defaultProps={
 
 
 
-export default GoogleApiComponent({ apiKey: ApiKey })(GoogleMapDrawFilter)
+export default GoogleApiComponent({
+	apiKey: ApiKey
+})(GoogleMapDrawFilter)

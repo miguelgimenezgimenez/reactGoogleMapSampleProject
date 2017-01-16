@@ -3,15 +3,14 @@ const Activity = require('../model/ActivitySchema');
 
 exports.createActivity = function () {
   const details = JSON.parse(this.request.body.data.details);
-  //TODO DONT NEED TO JSON PARSE
   const coords = this.request.body.data.coords;
-  console.log(details, coords);
 
   const newActivity = new Activity({
     title: details.title,
-    details:details.details,
+    info:details.details,
     type:details.activityType,
     latLng:coords,
+    icon:details.icon
   });
   return newActivity.save()
   .then(function () {

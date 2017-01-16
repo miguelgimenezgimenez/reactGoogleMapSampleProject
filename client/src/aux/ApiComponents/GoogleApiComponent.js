@@ -6,7 +6,7 @@ import GoogleApi from './GoogleApi'
 
 const defaultMapConfig = {}
 export const wrapper = (options) => (WrappedComponent) => {
-  const apiKey = 'AIzaSyBbnApuQR5k2uupNDdyAGOHaG-kp9FClKU';
+  const apiKey = 'AIzaSyADYWSlC4yEedJ-5lvQb9UFOVaMMux54Zc';
   const libraries = options.libraries || ['places'];
 
   class Wrapper extends React.Component {
@@ -21,7 +21,6 @@ export const wrapper = (options) => (WrappedComponent) => {
     }
 
     componentDidMount() {
-
       const refs = this.refs;
       this.scriptCache.google.onLoad((err, tag) => {
         try {
@@ -31,24 +30,28 @@ export const wrapper = (options) => (WrappedComponent) => {
           });
 
           const mapRef = refs.map;
+
           const node = ReactDOM.findDOMNode(mapRef);
           let center = new maps.LatLng(this.props.lat, this.props.lng)
 
           let mapConfig = Object.assign({}, defaultMapConfig, {
             center, zoom: this.props.zoom
           })
+
           this.map = new maps.Map(node, mapConfig);
+
           this.setState({
             loaded: true,
             map: this.map,
             google: window.google
           })
-        } catch (e){
-          console.log(e);
-          // window.location.reload();
-        }
-      });
+        }catch (e) {
+          window.location.reload();
+          console.log('react-google-map-draw-filter is reloading page to get google window, in next release this should be fixed');
 
+        }
+        
+      });
     }
 
     componentWillMount() {
