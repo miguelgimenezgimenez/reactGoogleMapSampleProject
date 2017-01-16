@@ -20,15 +20,13 @@ class Map extends React.Component {
     if (prevProps.google !== this.props.google){
       this.loadMap();
     }
-    if (!this.state.loading) {
       if (this.props.markers.length>0) {
         this.getMarkers();
       }
-    }
+
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps, this.props, 'componentWillReceiveProps');
      if (!this.state.loading) {
       if (this.props.markers.length>0) {
         this.getMarkers();
@@ -109,10 +107,8 @@ class Map extends React.Component {
   // DISPLAY MARKERS IN MAP
   //======================================================
   getMarkers(){
-    console.log('getmarkers');
     const {google} = this.props;
     const maps = google.maps;
-    console.log(this.props.markers);
 
     this.props.markers.forEach((flag)=>{
       const markerProps=({
@@ -162,9 +158,9 @@ class Map extends React.Component {
           zoom: zoom
         })
         this.map = new maps.Map(node, mapConfiguration);
-        this.setState({
-          loading: false,
-        });
+        // this.setState({
+        //   loading: false,
+        // });
       }
     }
 
