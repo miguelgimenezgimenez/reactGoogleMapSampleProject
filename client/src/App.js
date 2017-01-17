@@ -18,11 +18,9 @@ class App extends Component {
           <Route path='/' component={NewUserForm}/>
           <Route path='/existing' component={ExistingUserForm}/>
           <Route path='/session' component={Session}>
-              <Route path='/all' component={Activities}/>
-              <Route path='/createactivity' component={CreateActivity}/>
-
-            {/* <Route path='/createactivity' component={Form}/> */}
-      </Route>
+              <Route path='createactivity' component={CreateActivity}/>
+              <Route path=':type' component={Activities}/>
+        </Route>
     </Router>
   </div>)
 }

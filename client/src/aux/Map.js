@@ -28,6 +28,7 @@ class Map extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
     const google = this.props.google;
     if (this.props.drawMode !== nextProps.drawMode && nextProps.drawMode && this.props.google) {
       this.drawPolyline();
@@ -46,13 +47,11 @@ class Map extends React.Component {
       const marker = new maps.Marker(markerProps);
 
       this.props.handleReturnedMarkers({lat:e.latLng.lat(),lng:e.latLng.lng()});
-
       marker.addListener('dragend', (e)=>{
         this.props.handleReturnedMarkers({lat:e.latLng.lat(),lng:e.latLng.lng()});
       });
 
     }.bind(this));
-
   }
 
   drawPolyline(){
@@ -128,6 +127,7 @@ class Map extends React.Component {
 
 
     this.props.markers.forEach((flag)=>{
+      console.log(flag);
       const markerProps=({
         ...flag,
         position: new google.maps.LatLng(flag.latLng.lat,flag.latLng.lng),
@@ -161,8 +161,7 @@ class Map extends React.Component {
   }
 
   loadMap(){
-    // if (this.props && this.props.google) {
-    // google is available
+
     const {google} = this.props;
     const maps = google.maps;
 

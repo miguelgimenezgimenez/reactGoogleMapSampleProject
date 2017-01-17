@@ -12,7 +12,7 @@ const userLogged = (state={},action) => {
     case 'EXISTING_USER_SUCCESS':
     return Object.assign({},{loading:false});
     case 'LOGIN':
-    browserHistory.push('/session');
+    browserHistory.push('/session/');
 
     return Object.assign({},action.user,{loading:false});
   }

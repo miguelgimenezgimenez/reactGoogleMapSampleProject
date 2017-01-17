@@ -2,15 +2,17 @@ const Activity = require('../model/ActivitySchema');
 
 
 exports.createActivity = function () {
-  const details = JSON.parse(this.request.body.data.details);
-  const coords = this.request.body.data.coords;
+  console.log(this.request.body);
+  const details = JSON.parse(this.request.body.details);
+  const coords = this.request.body.coords;
+  const icon = this.request.body.icon;
 
   const newActivity = new Activity({
     title: details.title,
     info:details.details,
     type:details.activityType,
     latLng:coords,
-    icon:details.icon
+    icon:icon
   });
   return newActivity.save()
   .then(function () {
@@ -23,9 +25,13 @@ exports.createActivity = function () {
 };
 
 exports.fetchActivities = function() {
-  console.log('GET');
-  return Activity.find()
+  let query;
+  this.params.type==='all' ? query='' :query = this.params;
+
+
+  return Activity.find(query)
   .then(function (content) {
+    console.log(content);
     this.response.body = content;
   }.bind(this))
   .catch(function (err) {

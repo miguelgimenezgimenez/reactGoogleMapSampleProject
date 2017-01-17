@@ -6,13 +6,17 @@ const ActivitySchema =  new mongoose.Schema({
     type: String,
     required: true
   },
-  details: {
+  info: {
     type: String,
     required: true
   },
   type: {
     type: String,
     required: true
+  },
+  icon: {
+    type: String,
+    required: false
   },
 
   latLng:

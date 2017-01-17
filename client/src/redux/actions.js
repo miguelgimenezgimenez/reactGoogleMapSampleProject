@@ -43,13 +43,13 @@ export const addActivities = (data) =>{
   }
 }
 
-export const fetchActivities = (data) => {
+export const fetchActivities = (path) => {
+  console.log(path, 'path');
   return {
     type: 'FETCH_ACTIVITIES',
     success:addActivities,
     [CALL_API]:{
-      endpoint:'/fetchActivities',
-      data
+      endpoint:`/fetchActivities/${path}`
     }
   }
 };

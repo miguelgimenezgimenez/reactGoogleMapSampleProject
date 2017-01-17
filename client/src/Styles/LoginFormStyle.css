@@ -22,8 +22,8 @@ a:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, 0.9);
-  padding: 40px;
+  padding-left:50px;
+  padding-right: 50px;
   max-width: 600px;
   margin: 40px auto;
   border-radius: 4px;
@@ -72,8 +72,7 @@ h1 {
   text-align: center;
   color: #ffffff;
   font-weight: 300;
-  margin: 0 0 40px;
-}
+padding-top: 25px}
 
 label {
   position: absolute;

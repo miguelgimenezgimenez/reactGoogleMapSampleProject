@@ -14,7 +14,7 @@ class Navigation extends Component {
         return (
             <div>
                 <div className='upper-nav'>
-                    <Link to="createactivity">
+                    <Link to="/session/createactivity">
                         <button>
                           Create Activity
                         </button>
@@ -22,26 +22,26 @@ class Navigation extends Component {
 
                     <div className='user'>
                         <button>Settings</button>
-                        <img className="avatar" width={40} height={40} src="http://www.mujerhoy.com/noticias/201612/21/media/cortadas/Dalianah-Arekion-kCKI-U21839055910jrB-476x714@MujerHoy.jpg" alt="Image"/>
+                        <img className="avatar" width={40} height={40} src="../../images/avatar.png" alt="Image"/>
                     </div>
 
                 </div>
                 <div className='lower-nav'>
-                    <Link to="all">
+                    <Link to="/session/all">
                         <div className='lower-nav-item selected'>
                             All Activities
                         </div>
                     </Link>
-                    <Link>
-                        <div className='lower-nav-item'>Rewarded Duties</div>
+                    <Link to="/session/rewarded">
+                        <div className='lower-nav-item'>Rewarded Tasks</div>
                     </Link>
-                    <Link>
+                    <Link to="/session/leisure">
                         <div className='lower-nav-item'>Leisure Activities</div>
-                    </Link>
-                    <Link>
+                    </Link >
+                    <Link to="/session/cultural">
                         <div className='lower-nav-item'>Cultural Activities</div>
                     </Link>
-                    <Link>
+                    <Link to="/session/sports">
                         <div className='lower-nav-item'>Sport/Adventure Activities
                         </div>
                     </Link>

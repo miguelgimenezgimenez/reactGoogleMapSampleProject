@@ -8,7 +8,7 @@ router.get('/', function  () {
 });
 router.get('/home',user.login);
 
-router.get('/fetchActivities', activity.fetchActivities);
+router.get('/fetchActivities/:type', activity.fetchActivities);
 
 router.post('/login', user.login);
 router.post('/newuser', user.newUser);

@@ -51,6 +51,7 @@ export default store => next => action => {
 
   next(actionWith({ type: action.type + '_REQUEST' }))
 
+
   return apiCall(endpoint, method, data)
   .then(
     response => {
@@ -58,7 +59,7 @@ export default store => next => action => {
         response,
         type: action.type + '_SUCCESS'
       }))
-      if (action.success ) {
+      if (action.success) {
         store.dispatch(action.success(response));
       }
     }
