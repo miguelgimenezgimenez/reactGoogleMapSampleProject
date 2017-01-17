@@ -1,17 +1,20 @@
 const API_ROOT = 'http://localhost:8008'
 
 const apiCall = (endpoint, method='GET', data) => {
-  const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
+  const fullUrl = (endpoint.search('http') === -1) ? API_ROOT + endpoint : endpoint
   let body
   if (data) {
     body = JSON.stringify(data)
   }
+  console.log(fullUrl, method);
 
   return fetch(fullUrl, {
     method,
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'key':'322411b682267f192c606c2932546',
+      'sign':'true',
     },
     body,
   })
@@ -55,6 +58,7 @@ export default store => next => action => {
   return apiCall(endpoint, method, data)
   .then(
     response => {
+      console.log(response);
       next(actionWith({
         response,
         type: action.type + '_SUCCESS'

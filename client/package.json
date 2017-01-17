@@ -1,5 +1,5 @@
 {
-  "name": "whathapps",
+  "name": "soloproject",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -18,7 +18,7 @@
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
     "react-github-fork-ribbon": "^0.4.4",
-    "react-google-map-draw-filter": "^1.0.13",
+    "react-google-map-draw-filter": "^1.0.24",
     "react-icons": "^2.2.3",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",

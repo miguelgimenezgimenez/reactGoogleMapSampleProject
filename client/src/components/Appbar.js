@@ -45,6 +45,10 @@ class Navigation extends Component {
                         <div className='lower-nav-item'>Sport/Adventure Activities
                         </div>
                     </Link>
+                    <Link to="/session/meetup">
+                        <div className='lower-nav-item'>MEETUP
+                        </div>
+                    </Link>
 
                 </div>
             </div>

@@ -48,7 +48,7 @@ export const fetchActivities = (path) => {
     type: 'FETCH_ACTIVITIES',
     success:addActivities,
     [CALL_API]:{
-      endpoint:`/fetchActivities/${path}`
+      endpoint:`${path}`
     }
   }
 };

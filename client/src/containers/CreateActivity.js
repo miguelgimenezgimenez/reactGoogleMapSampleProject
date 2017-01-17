@@ -31,7 +31,6 @@ class FormExampleOnSubmit extends Component {
     const data={} ;
     data.details=(JSON.stringify(formData, null, 2));
     data.coords={lat:this.state.lat,lng:this.state.lng};
-    console.log(formData.activityType);
     this.setState({ formData:formData })
     switch (formData.activityType) {
       case 'cultural':
