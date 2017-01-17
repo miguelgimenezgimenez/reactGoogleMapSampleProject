@@ -16,6 +16,7 @@ class AllActivities extends Component {
     super();
     this.state = {
       draw:false,
+      activeMarkers:[],
     };
   }
   toggleDraw () {
@@ -27,20 +28,29 @@ class AllActivities extends Component {
     this.props.fetchActivities(this.props.params.type);
   }
   componentDidUpdate(prevProps, prevState) {
-  if (this.props.params.type!==prevProps.params.type) {
-    this.props.fetchActivities(this.props.params.type);
-  }
+    if (this.props.params.type!==prevProps.params.type) {
+      this.props.fetchActivities(this.props.params.type);
+    }
 
   }
 
-  handleReturnedMarkers (markers) {
-
+  handleReturnedMarkers(markers) {
+    console.log(markers);
+    this.setState({
+      activeMarkers: markers
+    });
   }
 
-  handleClick(map) {
-
-
+  renderMarkerInfo() {
+    if (this.state.activeMarkers) {
+      return this.state.activeMarkers.map((marker,i)=>(
+        <div key={`marker${i}`}>
+          {marker.info}
+        </div>)
+      )
+    }
   }
+
 
   render() {
 
@@ -51,10 +61,13 @@ class AllActivities extends Component {
           <GoogleMapDrawFilter
             markers={this.props.activities}
             drawMode={this.state.draw}
-            handleReturnedMarkers={this.handleReturnedMarkers
+            handleReturnedMarkers={this.handleReturnedMarkers.bind(this)
             }>
           </GoogleMapDrawFilter>
         </div>
+      </div>
+      <div>
+        {this.renderMarkerInfo.bind(this)()}
       </div>
     </div>
   );

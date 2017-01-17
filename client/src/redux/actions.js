@@ -44,7 +44,6 @@ export const addActivities = (data) =>{
 }
 
 export const fetchActivities = (path) => {
-  console.log(path, 'path');
   return {
     type: 'FETCH_ACTIVITIES',
     success:addActivities,

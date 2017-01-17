@@ -29,7 +29,7 @@ class GoogleMapDrawFilter extends React.Component {
 				/>
 
 			</div>
-		);
+		)
 	}
 }
 
@@ -43,13 +43,10 @@ GoogleMapDrawFilter.propTypes={
 	google:React.PropTypes.object, //is provided by wrapper
 	mapStyle:React.PropTypes.object,
 	handleReturnedMarkers:React.PropTypes.func,
-	onMarkerClick:React.PropTypes.func,
-	insertMarker:React.PropTypes.bool
-};
-
+	onMarkerClick:React.PropTypes.func
+}
 GoogleMapDrawFilter.defaultProps={
 	drawMode:true,
-	insertMarker:false,
 	mapConfig:{
 		zoom:14,
 		lat:41.384279176844764,
@@ -57,7 +54,7 @@ GoogleMapDrawFilter.defaultProps={
 
 	},
 	mapStyle:{
-		height:'600px',
+		height:'400px',
 		width: '600px',
 	},
 	polygonOptions:{
@@ -70,10 +67,11 @@ GoogleMapDrawFilter.defaultProps={
 		zIndex: 1
 	},
 	markers:[],
-};
+
+}
 
 
 
 export default GoogleApiComponent({
 	apiKey: ApiKey
-})(GoogleMapDrawFilter);
+})(GoogleMapDrawFilter)

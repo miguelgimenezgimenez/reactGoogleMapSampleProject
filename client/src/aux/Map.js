@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import isInside from 'point-in-polygon';
 
 
-const markersArray=[];
+let markersArray=[];
 let bounds;
 
 class Map extends React.Component {
@@ -11,6 +11,7 @@ class Map extends React.Component {
     super();
     this.state = {
       drawMode:false,
+      loaded:false,
     };
   }
 
@@ -25,14 +26,19 @@ class Map extends React.Component {
         this.insertMarker();
       }
     }
+    if (prevProps.markers!==this.props.markers && this.state.loaded){
+      this.getMarkers();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     const google = this.props.google;
     if (this.props.drawMode !== nextProps.drawMode && nextProps.drawMode && this.props.google) {
       this.drawPolyline();
     }
+
+
+
   }
   insertMarker(){
     const {google} = this.props;
@@ -124,10 +130,12 @@ class Map extends React.Component {
   getMarkers(){
     const {google} = this.props;
     const maps = google.maps;
-
+    markersArray=[];
+    markersArray.forEach(marker=>{
+      marker.setMap(null);
+    })
 
     this.props.markers.forEach((flag)=>{
-      console.log(flag);
       const markerProps=({
         ...flag,
         position: new google.maps.LatLng(flag.latLng.lat,flag.latLng.lng),
@@ -162,6 +170,7 @@ class Map extends React.Component {
 
   loadMap(){
 
+
     const {google} = this.props;
     const maps = google.maps;
 
@@ -179,6 +188,9 @@ class Map extends React.Component {
     this.map = new maps.Map(node, mapConfiguration);
     google.maps.event.addListenerOnce(this.map, 'idle', ()=>{
       this.getMarkers();
+    });
+    this.setState({
+      loaded: true
     });
 
   }
