@@ -6,73 +6,70 @@ const apiCall = (endpoint, method='GET', data) => {
   if (data) {
     body = JSON.stringify(data)
   }
-  console.log(fullUrl, method);
+  let headers;
+  method==='GET' ? (headers= {'Accept': 'application/json'}) : (headers= {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'});
 
-  return fetch(fullUrl, {
-    method,
-    headers: {
-      'Accept': 'application/json',
-    },
-    body,
-  })
-  .then(response =>
-    response.json()
-    .then(json => {
-      if (!response.ok) {
-        return Promise.reject(json)
-      }
-      return json
+    return fetch(fullUrl, {
+      method,
+      headers: headers,
+      body,
     })
-  )
-}
-
-// Action key that carries API call info interpreted by this Redux middleware.
-export const CALL_API = Symbol('Call API')
-
-// A Redux middleware that interprets actions with CALL_API info specified.
-// Performs the call and promises when such actions are dispatched.
-export default store => next => action => {
-  const callAPI = action[CALL_API]
-  if (typeof callAPI === 'undefined') {
-    return next(action)
+    .then(response =>
+      response.json()
+      .then(json => {
+        if (!response.ok) {
+          return Promise.reject(json)
+        }
+        return json
+      })
+    )
   }
 
-  let { endpoint, method, data }= callAPI
-  if (typeof endpoint !== 'string') {
-    throw new Error('Specify a string endpoint URL.')
-  }
+  // Action key that carries API call info interpreted by this Redux middleware.
+  export const CALL_API = Symbol('Call API')
+
+  // A Redux middleware that interprets actions with CALL_API info specified.
+  // Performs the call and promises when such actions are dispatched.
+  export default store => next => action => {
+    const callAPI = action[CALL_API]
+    if (typeof callAPI === 'undefined') {
+      return next(action)
+    }
+
+    let { endpoint, method, data }= callAPI
+    if (typeof endpoint !== 'string') {
+      throw new Error('Specify a string endpoint URL.')
+    }
 
 
-  const actionWith = data => {
-    const finalAction = Object.assign({}, action, data)
-    delete finalAction[CALL_API]
-    return finalAction
-  }
+    const actionWith = data => {
+      const finalAction = Object.assign({}, action, data)
+      delete finalAction[CALL_API]
+      return finalAction
+    }
 
-  next(actionWith({ type: action.type + '_REQUEST' }))
+    next(actionWith({ type: action.type + '_REQUEST' }))
 
 
-  return apiCall(endpoint, method, data)
-  .then(
-    response => {
-      console.log(response);
-      next(actionWith({
-        response,
-        type: action.type + '_SUCCESS'
-      }))
-      if (action.success) {
-        if (Array.isArray(response)){
+    return apiCall(endpoint, method, data)
+    .then(
+      response => {
+        next(actionWith({
+          response,
+          type: action.type + '_SUCCESS'
+        }))
+        if (action.success) {
           store.dispatch(action.success(response));
-        } else {
-          response = response.venues.map((event))
+
         }
       }
-    }
-  )
-  .catch(
-    error => next(actionWith({
-      type: action.type + '_FAILURE',
-      error: error.message || 'Something bad happened'
-    }))
-  )
-}
+    )
+    .catch(
+      error => next(actionWith({
+        type: action.type + '_FAILURE',
+        error: error.message || 'Something bad happened'
+      }))
+    )
+  }

@@ -45,12 +45,12 @@ export const wrapper = (options) => (WrappedComponent) => {
             map: this.map,
             google: window.google
           })
-        }catch (e) {
+        } catch (e) {
           window.location.reload();
           console.log('react-google-map-draw-filter is reloading page to get google window, in next release this should be fixed');
 
         }
-        
+
       });
     }
 

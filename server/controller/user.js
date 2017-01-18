@@ -3,12 +3,14 @@ const User = require('../model/UserSchema');
 
 
 exports.newUser = function * (next) {
-  const data = this.body.data;
+
+  const data = (this.request.body);
   try {
-    this.body=yield User.create({
+    this.response.body =yield User.create({
       name: data.firstName,
       email:data.emailAddress
     });
+
   } catch (e) {
     console.log(e);
   }

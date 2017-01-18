@@ -52,7 +52,6 @@ class AllActivities extends Component {
     });
   }
   onMarkerClick(marker){
-    console.log(marker);
     this.setState({
       activeMarkers: [marker]
     });
@@ -93,8 +92,18 @@ class AllActivities extends Component {
 }
 }
 const mapStateToProps = (state) => {
+  if (Array.isArray(state.activities)) {
+    return {
+      activities: state.activities,
+    }
+  }
+  const MappedActivities = state.activities.response.venues.map(event=>{
+    return {
+      info:event.name,
+      latLng:{lat:event.location.lat ,lng:event.location.lng}}
+  })
   return {
-    activities: state.activities,
+    activities: MappedActivities,
   }
 };
 const mapDispatchToProps = (dispatch) => ({
