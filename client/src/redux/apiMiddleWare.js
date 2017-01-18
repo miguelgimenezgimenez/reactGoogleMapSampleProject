@@ -12,9 +12,6 @@ const apiCall = (endpoint, method='GET', data) => {
     method,
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'key':'322411b682267f192c606c2932546',
-      'sign':'true',
     },
     body,
   })
@@ -64,7 +61,11 @@ export default store => next => action => {
         type: action.type + '_SUCCESS'
       }))
       if (action.success) {
-        store.dispatch(action.success(response));
+        if (Array.isArray(response)){
+          store.dispatch(action.success(response));
+        } else {
+          response = response.venues.map((event))
+        }
       }
     }
   )

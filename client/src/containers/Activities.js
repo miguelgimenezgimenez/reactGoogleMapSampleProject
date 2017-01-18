@@ -25,11 +25,10 @@ class AllActivities extends Component {
     )
   }
 
-
   componentDidMount() {
     let path;
     if (this.props.params.type==='meetup') {
-      path = 'https://api.meetup.com/2/member/self/?access_token=176e332f8ca4b321f33dac39a25933af'
+      path = 'https://api.foursquare.com/v2/venues/search?ll=41.3918, 2.1454&client_id=AHTZ33XG1YZJD5UVCRNTVVIZRXIL4RGJUXJCQELSCFP3GRER&client_secret=NDEUMPC0BOUGR3A0SIHOYHQKQSABPSAAH1SWFOCUWX4EIYYX&v=20160117&m=foursquare'
     } else {
       path= `/fetchActivities/${this.props.params.type}`
     }
@@ -38,7 +37,7 @@ class AllActivities extends Component {
   componentDidUpdate(prevProps, prevState){
     let path;
     if (this.props.params.type==='meetup') {
-      path = 'https://api.meetup.com/2/member/self/?access_token=176e332f8ca4b321f33dac39a25933af'
+      path = 'https://api.foursquare.com/v2/venues/search?lll=41.3918, 2.1454&client_id=AHTZ33XG1YZJD5UVCRNTVVIZRXIL4RGJUXJCQELSCFP3GRER&client_secret=NDEUMPC0BOUGR3A0SIHOYHQKQSABPSAAH1SWFOCUWX4EIYYX&v=20160117&m=foursquare'
     } else {
       path= `/fetchActivities/${this.props.params.type}`
     }
