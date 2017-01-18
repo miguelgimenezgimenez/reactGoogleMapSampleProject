@@ -3,6 +3,11 @@
   padding: 2px 8px;
   height: 20px;
 }
+.navigation-bar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+}
 
 .upper-nav {
   height: 80px;

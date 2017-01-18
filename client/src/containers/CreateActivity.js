@@ -45,7 +45,7 @@ class FormExampleOnSubmit extends Component {
       data.icon='../../images/sports.png';
         break;
 
-      case 'rewarded':
+      case 'reward':
       data.icon='../../images/cashicon.png';
         break;
 

@@ -12,7 +12,7 @@ class Navigation extends Component {
     render() {
 
         return (
-            <div>
+            <div className='navigation-bar'>
                 <div className='upper-nav'>
                     <Link to="/session/createactivity">
                         <button>
@@ -32,7 +32,7 @@ class Navigation extends Component {
                             All Activities
                         </div>
                     </Link>
-                    <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/rewarded">
+                    <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/reward">
                         <div className='lower-nav-item'>Rewarded Tasks</div>
                     </Link>
                     <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/leisure">

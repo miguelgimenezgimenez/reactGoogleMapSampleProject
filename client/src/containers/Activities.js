@@ -37,7 +37,7 @@ class AllActivities extends Component {
   componentDidUpdate(prevProps, prevState){
     let path;
     if (this.props.params.type==='meetup') {
-      path = 'https://api.foursquare.com/v2/venues/search?lll=41.3918, 2.1454&client_id=AHTZ33XG1YZJD5UVCRNTVVIZRXIL4RGJUXJCQELSCFP3GRER&client_secret=NDEUMPC0BOUGR3A0SIHOYHQKQSABPSAAH1SWFOCUWX4EIYYX&v=20160117&m=foursquare'
+      path = 'https://api.foursquare.com/v2/venues/search?ll=41.3918, 2.1454&client_id=AHTZ33XG1YZJD5UVCRNTVVIZRXIL4RGJUXJCQELSCFP3GRER&client_secret=NDEUMPC0BOUGR3A0SIHOYHQKQSABPSAAH1SWFOCUWX4EIYYX&v=20160117&m=foursquare'
     } else {
       path= `/fetchActivities/${this.props.params.type}`
     }
@@ -69,9 +69,10 @@ class AllActivities extends Component {
 
   render() {
 
-    return (<div>
-      <button style={{marginTop:30}}onClick={this.toggleDraw.bind(this)}>Draw Area</button>
-      <div className='main-body'>
+    return (
+      <div className='activities-body'>
+        <button style={{marginTop:30}}onClick={this.toggleDraw.bind(this)}>Draw Area</button>
+
         <div className='mapcontainer'>
           <GoogleMapDrawFilter
             mapStyle={{height:400,width:800}}
@@ -87,9 +88,8 @@ class AllActivities extends Component {
         </div>
       </div>
 
-    </div>
-  );
-}
+    );
+  }
 }
 const mapStateToProps = (state) => {
   if (Array.isArray(state.activities)) {
@@ -101,13 +101,13 @@ const mapStateToProps = (state) => {
     return {
       info:event.name,
       latLng:{lat:event.location.lat ,lng:event.location.lng}}
-  })
-  return {
-    activities: MappedActivities,
-  }
-};
-const mapDispatchToProps = (dispatch) => ({
-  fetchActivities: (path) => dispatch(fetchActivities(path)),
-});
+    })
+    return {
+      activities: MappedActivities,
+    }
+  };
+  const mapDispatchToProps = (dispatch) => ({
+    fetchActivities: (path) => dispatch(fetchActivities(path)),
+  });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllActivities);
+  export default connect(mapStateToProps, mapDispatchToProps)(AllActivities);

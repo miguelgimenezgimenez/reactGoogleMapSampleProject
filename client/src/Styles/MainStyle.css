@@ -1,10 +1,14 @@
-.main-body{
+.activities-body{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-top: 120px;
+  z-index: -10;
+
 
 }
+
 
 .mapcontainer{
 

@@ -10,7 +10,7 @@ const apiCall = (endpoint, method='GET', data) => {
   method==='GET' ? (headers= {'Accept': 'application/json'}) : (headers= {
     'Accept': 'application/json',
     'Content-Type': 'application/json'});
-
+    console.log(endpoint, method, headers);
     return fetch(fullUrl, {
       method,
       headers: headers,

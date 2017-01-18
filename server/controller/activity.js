@@ -28,10 +28,10 @@ exports.fetchActivities = function() {
   let query;
   this.params.type==='all' ? query='' :query = this.params;
 
-
+console.log(query);
   return Activity.find(query)
   .then(function (content) {
-    console.log(content);
+    console.log(content, 'respomse');
     this.response.body = content;
   }.bind(this))
   .catch(function (err) {
