@@ -46,7 +46,7 @@ class Navigation extends Component {
                         </div>
                     </Link>
                     <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/meetup">
-                        <div className='lower-nav-item'>MEETUP
+                        <div className='lower-nav-item'>FOURSQUARE
                         </div>
                     </Link>
 
