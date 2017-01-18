@@ -27,25 +27,25 @@ class Navigation extends Component {
 
                 </div>
                 <div className='lower-nav'>
-                    <Link to="/session/all">
-                        <div className='lower-nav-item selected'>
+                    <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/all">
+                        <div className='lower-nav-item '>
                             All Activities
                         </div>
                     </Link>
-                    <Link to="/session/rewarded">
+                    <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/rewarded">
                         <div className='lower-nav-item'>Rewarded Tasks</div>
                     </Link>
-                    <Link to="/session/leisure">
+                    <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/leisure">
                         <div className='lower-nav-item'>Leisure Activities</div>
                     </Link >
-                    <Link to="/session/cultural">
+                    <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/cultural">
                         <div className='lower-nav-item'>Cultural Activities</div>
                     </Link>
-                    <Link to="/session/sports">
+                    <Link  style={{textDecoration:'none'}} activeClassName='selected' to="/session/sports">
                         <div className='lower-nav-item'>Sport/Adventure Activities
                         </div>
                     </Link>
-                    <Link to="/session/meetup">
+                    <Link style={{textDecoration:'none'}} activeClassName='selected' to="/session/meetup">
                         <div className='lower-nav-item'>MEETUP
                         </div>
                     </Link>
