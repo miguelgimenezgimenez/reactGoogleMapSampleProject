@@ -64,7 +64,9 @@ class FormExampleOnSubmit extends Component {
 
   render() {
     const { formData, value } = this.state
-    return (<div>
+    return (
+      <div className='form-container'>
+
       <h1>Create Activity</h1>
       <Form onSubmit={this.handleSubmit.bind(this)}>
         <Form.Group widths='equal'>
