@@ -4,20 +4,12 @@
   justify-content: center;
   flex-direction: column;
   padding-top: 120px;
-  z-index: -10;
-
-
 }
 
 
 .mapcontainer{
-
   margin-top: 30px;
-
 }
 .marker-info{
-
-  /*background-color: red;*/
   color:white;
-
 }
