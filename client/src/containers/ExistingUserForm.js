@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import { connect } from 'react-redux';
 import { existingUser } from '../redux/actions';
+import { browserHistory} from 'react-router';
 import Login from '../components/Login';
 
 import '../Styles/LoginFormStyle.css';
@@ -18,6 +19,12 @@ class ExistingUserForm extends Component {
       password: '',
     };
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.user.email) {
+      browserHistory.push('/session/');
+    }
+  }
+
   submit() {
     this.props.existingUser(this.state);
   }
@@ -62,7 +69,11 @@ class ExistingUserForm extends Component {
 
       }
     }
-    const mapStateToProps = (state) => ({});
+    const mapStateToProps = (state) => ({
+      // console.log(state);
+      user:state.userLogged
+
+    });
     const mapDispatchToProps = (dispatch) => ({
       existingUser: (data) => dispatch(existingUser(data)),
 

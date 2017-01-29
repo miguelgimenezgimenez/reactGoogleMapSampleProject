@@ -5,15 +5,13 @@ import { browserHistory} from 'react-router';
 
 const userLogged = (state={},action) => {
   switch (action.type) {
-    // case 'GET_EVENTS_REQUEST':
-    // case 'NEW_USER_REQUEST':
+
     case 'EXISTING_USER_REQUEST':
     return Object.assign({}, {loading: true})
     case 'EXISTING_USER_SUCCESS':
     return Object.assign({},{loading:false});
     case 'LOGIN':
-    browserHistory.push('/session/');
-
+    // browserHistory.push('/session/');
     return Object.assign({},action.user,{loading:false});
   }
   return state;

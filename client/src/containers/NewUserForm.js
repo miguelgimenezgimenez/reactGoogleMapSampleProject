@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { newUser } from '../redux/actions';
+import { browserHistory} from 'react-router';
 
 import Login from '../components/Login';
 import '../Styles/LoginFormStyle.css';
@@ -17,6 +18,12 @@ class NewUserForm extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.user.email) {
+      browserHistory.push('/session/');
+
+    }
+  }
 
   submit() {
     this.props.newUser(this.state);
@@ -76,7 +83,10 @@ class NewUserForm extends Component {
           )
         }
       }
-      const mapStateToProps = (state) => ({});
+      const mapStateToProps = (state) => ({
+        user: state.userLogged,
+        
+      });
       const mapDispatchToProps = (dispatch) => ({
         newUser: (data) => dispatch(newUser(data)),
 

@@ -60,7 +60,9 @@ class AllActivities extends Component {
     if (this.state.activeMarkers) {
       return this.state.activeMarkers.map((marker,i)=>(
         <div key={`marker${i}`}>
-          {marker.info}
+          <h2>
+            {marker.info}
+          </h2>
         </div>)
       )
     }
@@ -79,35 +81,37 @@ class AllActivities extends Component {
             onMarkerClick={this.onMarkerClick.bind(this)}
             markers={this.props.activities}
             drawMode={this.state.draw}
-            handleReturnedMarkers={this.handleReturnedMarkers.bind(this)
-            }>
-          </GoogleMapDrawFilter>
-        </div>
-        <div className='marker-info'>
-          <h1>{this.renderMarkerInfo.bind(this)()}</h1>
-        </div>
-      </div>
+            handleReturnedMarkers={this.handleReturnedMarkers.bind(this)}
+            apiKey='AIzaSyADYWSlC4yEedJ-5lvQb9UFOVaMMux54Zc'
 
-    );
-  }
-}
-const mapStateToProps = (state) => {
-  if (Array.isArray(state.activities)) {
-    return {
-      activities: state.activities,
+            >
+            </GoogleMapDrawFilter>
+          </div>
+          <div className='marker-info'>
+            {this.renderMarkerInfo.bind(this)()}
+          </div>
+        </div>
+
+      );
     }
   }
-  const MappedActivities = state.activities.response.venues.map(event=>{
-    return {
-      info:event.name,
-      latLng:{lat:event.location.lat ,lng:event.location.lng}}
-    })
-    return {
-      activities: MappedActivities,
+  const mapStateToProps = (state) => {
+    if (Array.isArray(state.activities)) {
+      return {
+        activities: state.activities,
+      }
     }
-  };
-  const mapDispatchToProps = (dispatch) => ({
-    fetchActivities: (path) => dispatch(fetchActivities(path)),
-  });
+    const MappedActivities = state.activities.response.venues.map(event=>{
+      return {
+        info:event.name,
+        latLng:{lat:event.location.lat ,lng:event.location.lng}}
+      })
+      return {
+        activities: MappedActivities,
+      }
+    };
+    const mapDispatchToProps = (dispatch) => ({
+      fetchActivities: (path) => dispatch(fetchActivities(path)),
+    });
 
-  export default connect(mapStateToProps, mapDispatchToProps)(AllActivities);
+    export default connect(mapStateToProps, mapDispatchToProps)(AllActivities);

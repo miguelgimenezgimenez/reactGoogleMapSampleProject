@@ -16,7 +16,12 @@
   margin-top: 40px;
   margin-bottom: 40px;
 }
-
+h2{
+  color:white;
+  background-color: var(--hipster-orange);
+  padding: 8px;
+  border-top:var(--hipster-dark) solid 8px;
+}
 
 .form-container{
   padding-top:120px;

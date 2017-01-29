@@ -67,7 +67,7 @@ class FormExampleOnSubmit extends Component {
     return (
       <div className='form-container'>
 
-      <h1>Create Activity</h1>
+      <h2>Create Activity</h2>
       <Form onSubmit={this.handleSubmit.bind(this)}>
         <Form.Group widths='equal'>
           <Form.Input name='title' placeholder='Title' />
@@ -77,6 +77,8 @@ class FormExampleOnSubmit extends Component {
           <Form.Field>
             <div className='map-container'>
               <Map
+                apiKey='AIzaSyADYWSlC4yEedJ-5lvQb9UFOVaMMux54Zc'
+
                 mapStyle={{height:400,width:800}}
                 drawMode={false}
                 insertMarker={true}
